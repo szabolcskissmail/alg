@@ -57,22 +57,22 @@ class AlgDiv(Alg):
         return "(" + self._parentAlg.format() + " / "+ str(self._value) + ")"
 
 
-def generate(count, alg, deep = 0) -> Alg:
+def generate(count, alg, deep=0) -> Alg:
     if deep == count:
         return alg
 
-    r = random.randint(0, 3)
+    R = random.randint(0, 3)
     newdeep = deep + 1
-    if r == 0:
+    if R == 0:
         return generate(count, AlgAdd(alg, random.randint(1, 100)), newdeep)
 
-    if r == 1:
+    if R == 1:
         return generate(count, AlgMinus(alg, random.randint(1, 100)), newdeep)
 
-    if r == 2:
+    if R == 2:
         return generate(count, AlgMultiple(alg, random.randint(1, 100)), newdeep)
 
-    if r == 3:
+    if R == 3:
         return generate(count, AlgDiv(alg, random.randint(1, 100)), newdeep)
 
 if __name__ == "__main__":
